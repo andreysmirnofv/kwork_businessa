@@ -24,10 +24,10 @@ bot.on("message", async (msg) => {
       }
   }
   if (!triggerWordsFunc(msg) || !yellowTriggerWordsFunc(msg) && msg.from.first_name === msg.from.first_name + " 2в" && msg.text.length >= 20 || msg.audio?.duration == 5) {
-      bot.forwardMessage(msg.chat.id, process.env.fromChatId, 500)
-      bot.forwardMessage(msg.chat.id, process.env.fromChatId, 501)
-      bot.forwardMessage(msg.chat.id, process.env.fromChatId, 503)
-        thirdCycle()
+    bot.forwardMessage(msg.chat.id, process.env.fromChatId, 500)
+    bot.forwardMessage(msg.chat.id, process.env.fromChatId, 501)
+    bot.forwardMessage(msg.chat.id, process.env.fromChatId, 503)
+    thirdCycle()
       } else if (yellowTriggerWordsFunc(msg)){
         fourthCycle()
       await bot.sendMessage(msg.chat.id, "hello world")
