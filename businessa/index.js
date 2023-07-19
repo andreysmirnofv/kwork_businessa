@@ -29,7 +29,7 @@ bot.on("message", async (msg) => {
       bot.forwardMessage(msg.chat.id, process.env.fromChatId, 503)
         thirdCycle()
       } else if (yellowTriggerWordsFunc(msg)){
-      fourthCycle()
+        fourthCycle()
       await bot.sendMessage(msg.chat.id, "hello world")
     }else await bot.sendMessage(msg.chat.id, "вы дали не верный ответ")
   
