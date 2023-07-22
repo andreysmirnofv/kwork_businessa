@@ -79,6 +79,13 @@ def process_telegram_contact_to_two_w(driver):
                     By.CLASS_NAME, "form-control")
                 change_username.send_keys(" 2в")
                 print(username)
+                with open (path, 'w') as file:
+                    data = json.load(file)
+            
+                data.append(contact_name)
+
+                with open (path, 'w') as file:
+                    json.dump(data, file, indent=4)
                 return contact_name
     except Exception as e:
         print(e)
@@ -99,7 +106,7 @@ def process_telegram_contact_to_three_w(driver):
         # Выводим значения на экран
         for username in contact_name:
             print(username)
-            if not ' 2в' in username:
+            if not ' 3в' in username:
                 find_contact = driver.find_element(
                     By.ID, "telegram-search-input")
                 time.sleep(5)

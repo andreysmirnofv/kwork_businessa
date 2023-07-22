@@ -1,5 +1,6 @@
 const request = require('request');
-const triggerWords = require('../chrome/contacts/contacts.json')
+const triggerWords = require('../assets/db/trigger-words/triggerWords.json')
+const user = require('../chrome/contacts/contacts.json')
 const yellowTriggerWords = require('../chrome/contacts/yellowTriggerWords.json')
 
 function firstCycle(){
@@ -45,9 +46,21 @@ async function yellowTriggerWordsFunc(msg){
     }
     return false
 }
+
+async function deleteUser(){
+    let username = JSON.parse(require('fs').readFileSync(user, 'utf-8'))
+
+    for(username in user){
+        if ('👍' in user[username]){
+            return user[username] = {}
+        }
+        require('fs').writeFileSync(user[username], null, '\t')
+    }
+}
   
 
 module.exports = {
+    firstCycle: firstCycle,
     fifthCycle: fifthCycle,
     secondCycle: secondCycle,
     thirdCycle: thirdCycle,
@@ -55,5 +68,6 @@ module.exports = {
     fifthCycle: fifthCycle,
     lastCycle: lastCycle,
     triggerWordsFunc: triggerWordsFunc,
-    yellowTriggerWordsFunc: yellowTriggerWordsFunc
+    yellowTriggerWordsFunc: yellowTriggerWordsFunc,
+    deleteUser: deleteUser,
 }
